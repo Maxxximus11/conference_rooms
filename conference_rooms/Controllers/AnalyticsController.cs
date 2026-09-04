@@ -15,6 +15,17 @@ namespace conference_rooms.Controllers
             _bookingRepository = bookingRepository;
         }
 
+        /// <summary>
+        /// Отримання звіту про доходи від оренди залів.
+        /// </summary>
+        /// <remarks>
+        /// Розраховує та повертає загальну суму доходу, кількість бронювань та загальну тривалість оренди для кожного конференц-залу за вказаний період.
+        /// </remarks>
+        /// <param name="startDate">Початкова дата для звіту (наприклад, 2026-09-01T00:00:00)</param>
+        /// <param name="endDate">Кінцева дата для звіту (наприклад, 2026-09-30T23:59:59)</param>
+        /// <returns>Звіт із розрахунком прибутку по кожному залу.</returns>
+        /// <response code="200">Звіт успішно згенеровано.</response>
+        /// <response code="400">Помилка валідації (якщо початкова дата більша за кінцеву).</response>
         [HttpGet("revenue")]
         public async Task<IActionResult> GetRevenueReport([FromQuery] DateTime startDate, [FromQuery] DateTime endDate)
         {

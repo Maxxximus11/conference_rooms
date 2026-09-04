@@ -24,6 +24,18 @@ namespace conference_rooms.Controllers
             _priceCalculatorService = priceCalculatorService;
         }
 
+        /// <summary>
+        /// Бронювання конференц-залу.
+        /// </summary>
+        /// <remarks>
+        /// Створює нове бронювання для вказаного залу. Автоматично перевіряє, чи не зайнятий зал у цей час, та розраховує фінальну вартість з урахуванням часу доби (знижки/націнки) і вибраних додаткових послуг.
+        /// </remarks>
+        /// <param name="bookingDto">Об'єкт з даними для бронювання (ID залу, час, тривалість, послуги)</param>
+        /// <returns>Підтвердження бронювання з детальним розрахунком загальної вартості оренди.</returns>
+        /// <response code="200">Бронювання успішно створено.</response>
+        /// <response code="400">Помилка у розрахунках або некоректні вхідні дані.</response>
+        /// <response code="404">Вказаний зал не знайдено.</response>
+        /// <response code="409">Конфлікт часу (зал уже заброньовано на обрані години).</response>
         [HttpPost]
         public async Task<IActionResult> CreateBooking(CreateBookingDto bookingDto)
         {
