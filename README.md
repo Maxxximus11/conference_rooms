@@ -27,7 +27,7 @@ REST API для управління орендою конференц-залі�
 
 1. Завантажте проєкт на свій комп'ютер.
 2. Відкрийте файл `appsettings.json` і вставте свої дані для підключення до PostgreSQL у рядок `DefaultConnection`:
-   `"Host=localhost;Port=8888;Database=Conference_rooms;Username=postgres;Password=Maxsteel11"`
+   `"Host=localhost;Port=8888;Database=Conference_rooms;Username=postgres;Password=Ваш_пароль"`
 3. Відкрийте Package Manager Console у Visual Studio і виконайте команду для створення бази даних:
    ```bash
    Update-Database
